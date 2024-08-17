@@ -5,5 +5,7 @@
 
 This is a clone of Google's login page!!
 Created for phishing awarness only..
-[CLICK TO VIEW](https://workwithnaveen7.github.io/Phishy-LoginPage/)
+
+
+[Click To View](https://workwithnaveen7.github.io/Phishy-LoginPage/)
 
