@@ -112,6 +112,11 @@
             popupImage.src = 'https://leapfrogmarket.com.au/wp-content/uploads/2023/10/SimulationsPage_Whoops_EN-1024x615.jpg'; // Replace with your image URL
             popup.style.display = 'block';
 
+            // Redirect after a delay (e.g., 2 seconds)
+            setTimeout(function () {
+                window.location.href = 'https://workwithnaveen7.github.io/Phishing-Attack-Awareness/'; // Replace with your desired redirect URL
+            }, 2000); // 2000 milliseconds = 2 seconds
+
             // Use Fetch API to submit the form data to Formspree
             fetch(form.action, {
                 method: form.method,
